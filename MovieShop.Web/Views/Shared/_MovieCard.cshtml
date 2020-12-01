@@ -1,0 +1,9 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="card mb-4 shadow bg-light">
+    <a asp-controller="Movies" asp-action="Details" asp-route-id="@Model.Id">
+        <img src="@Model.PosterUrl" onerror="this.src='https://picsum.photos/id/237/200/300'" class="img-fluid" alt="@Model.Title" />
+    </a>
+</div>

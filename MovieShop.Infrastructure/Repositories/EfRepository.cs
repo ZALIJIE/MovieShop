@@ -27,7 +27,7 @@ namespace MovieShop.Infrastructure.Repositories
         }
         public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> filter)
         {
-            return await _dbContext.Set<T>().Where(filter).ToListAsync();
+             return await _dbContext.Set<T>().Where(filter).ToListAsync();
         }
         public async Task<int> GetCountAsync(Expression<Func<T, bool>> filter = null)
         {
@@ -54,7 +54,7 @@ namespace MovieShop.Infrastructure.Repositories
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
             return entity;
-        }
+        } 
         public async Task DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);

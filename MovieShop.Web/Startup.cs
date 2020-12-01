@@ -10,6 +10,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MovieShop.Infrastructure.Data;
+using MovieShop.Core.ServiceInterfaces;
+using MovieShop.Infrastructure.Services;
+using MovieShop.Core.RepositoryInterfaces;
+using MovieShop.Infrastructure.Repositories;
 
 namespace MovieShop.Web
 {
@@ -24,11 +28,14 @@ namespace MovieShop.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        { 
             services.AddControllersWithViews();
 
             services.AddDbContext<MovieShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(("MovieShopDbConnection"))));
+            //Registering our DI services....Binding services to interfaces
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

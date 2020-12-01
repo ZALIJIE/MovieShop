@@ -6,21 +6,43 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using MovieShop.Core.ServiceInterfaces;
 
 namespace MovieShop.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IMovieService _movieService;
+        public HomeController(ILogger<HomeController> logger, IMovieService movieService)
         {
             _logger = logger;
+            _movieService = movieService;
         }
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var topGrossingMovies = await _movieService.GetHighestGrossingMovies();
+
+            return View(topGrossingMovies);
+
+            //var testdata = "List of Movies";
+            //ViewBag.myproperty = testdata;
+
+            //To pass data from Controller to View
+            //ViewBag, ViewData, Stri=ongly Typed Models
+
+            // By default whe  you do return View its gonna return View with Same name as action method
+            // name inside the Views Folder of that Controller name folder
+            // HttpContext in ASP.NET Core and ASP.NET which will provide you with all the information regarding your HTTP Request
+            // Controllers will call Services ==> Repositories
+            // Navigation ==> list of Genres as a dropdown
+            // showing top 20 highest revenue movies as Movie Cards....with images
+            // Card in bootstrap, cardimage, movieid, title
+            // Movie entity has all the above,
+            // Models based on your UI/API requirement.
+            // Models/ViewModels in MVC
+            // DTO - Data Transfer Objects in API
+            // We create custom classes based on our UI/API requirement
         }
 
         public IActionResult Privacy()

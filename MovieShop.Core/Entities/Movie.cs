@@ -29,5 +29,6 @@ namespace MovieShop.Core.Entities
         public List<MovieCast> MovieCasts { get; set; }
         public List<MovieCrew> MovieCrews { get; set; }
         public List<Review> Reviews { get; set; }
+        public decimal Rating { get; set; }
     }
 }
