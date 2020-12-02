@@ -1,12 +1,20 @@
-﻿@using Microsoft.EntityFrameworkCore.Query.SqlExpressions 
-@*@model IEnumerable<MovieShop.Core.Models.Response.MovieResponseModel>*@
+﻿@model IEnumerable<MovieShop.Core.Models.MovieResponseModel>
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">
-        Welcome
-    </h1>
-    @ViewBag.myproperty
+
+<div class="card" style="width: 18rem;">
+    <div class="container-fluid bg-light">
+        <div class="row">
+            @foreach (var movie in Model)
+            {
+            <div class="col-6">
+                //call our movie card from here
+                @await Html.PartialAsync("_MovieCard", movie)
+            </div>
+
+            }
+        </div>
+    </div>
 </div>

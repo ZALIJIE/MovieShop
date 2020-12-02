@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MovieShop.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using MovieShop.Core.ServiceInterfaces;
 
-
-namespace MovieShop.Web.Controllers
+namespace MovieShop.MVC.Controllers
 {
-    public class MoviesController
+    public class MoviesController : Controller
     {
-        //public IEnumerable<Movies> Index()
-        //{
-        //    //Retrieve movies from databse
-            
-        //}
+        private readonly IMovieService _movieService;
 
-        //public Movies MovieByGenre(Genre g)
-        //{
+        public MoviesController(IMovieService movieService)
+        {
+            _movieService = movieService;
+        }
 
-        //}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        //public string Details(Movies m)
-        //{
+        public async Task<IActionResult> Genre(int id)
+        {
+            var movies = await _movieService.GetMoviesByGenre(id);
+            return View("~/Views/Home/Index.cshtml", movies);
+        }
 
-        //}
+        public async Task<IActionResult> Details(int id)
+        {
+            var movie = await _movieService.GetMovieAsync(id);
+            return View(movie);
+        }
     }
 }
