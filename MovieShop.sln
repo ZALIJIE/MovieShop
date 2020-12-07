@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieShop.Core", "MovieShop
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieShop.Infrastructure", "MovieShop.Infrastructure\MovieShop.Infrastructure.csproj", "{54AD4E3E-673A-4DF5-A678-FA23A33A75FE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieShop.UnitTest", "MovieShop.UnitTest\MovieShop.UnitTest.csproj", "{B51A23E0-B042-4736-8B2A-A3ED3D6A19E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieShop.API", "MovieShop.API\MovieShop.API.csproj", "{1A12AA7A-F3BC-4DF0-8A7B-FFD7A27A24E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{54AD4E3E-673A-4DF5-A678-FA23A33A75FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54AD4E3E-673A-4DF5-A678-FA23A33A75FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54AD4E3E-673A-4DF5-A678-FA23A33A75FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51A23E0-B042-4736-8B2A-A3ED3D6A19E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51A23E0-B042-4736-8B2A-A3ED3D6A19E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51A23E0-B042-4736-8B2A-A3ED3D6A19E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51A23E0-B042-4736-8B2A-A3ED3D6A19E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A12AA7A-F3BC-4DF0-8A7B-FFD7A27A24E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A12AA7A-F3BC-4DF0-8A7B-FFD7A27A24E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A12AA7A-F3BC-4DF0-8A7B-FFD7A27A24E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A12AA7A-F3BC-4DF0-8A7B-FFD7A27A24E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

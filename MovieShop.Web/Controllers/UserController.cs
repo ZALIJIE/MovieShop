@@ -21,7 +21,7 @@ namespace MovieShop.Web.Controllers
         {
             _userService = userService;
             _movieService = movieService;
-        }
+        } 
 
         public Task<UserLoginResponseModel> ValidateUser(string email, string password)
         {

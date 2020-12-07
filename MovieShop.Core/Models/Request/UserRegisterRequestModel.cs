@@ -21,5 +21,7 @@ namespace MovieShop.Core.Models.Request
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
+
+
     }
 }
