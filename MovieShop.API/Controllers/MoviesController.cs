@@ -37,5 +37,23 @@ namespace MovieShop.API.Controllers
                 return Ok(movies);
 
         }
+
+        [HttpGet]
+        [Route("{id:int}", Name ="GetMovie")]
+        public async Task<IActionResult> GetMovie(int id)
+        {
+            var movie = await _movieService.GetMovieAsync(id);
+            return Ok(movie);
+        }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetAllMovies([FromQuery] int pageSize = 30, [FromQuery] int page = 1,
+            string title = "")
+        {
+            var movies = await _movieService.GetMoviesByPagination(pageSize, page, title);
+            return Ok(movies);
+        }
+
     }
 }

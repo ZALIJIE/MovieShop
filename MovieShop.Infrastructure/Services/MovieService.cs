@@ -84,14 +84,45 @@ namespace MovieShop.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<MovieDetailsResponseModel> GetMovieAsync(int id)
+        public async Task<MovieDetailsResponseModel> GetMovieAsync(int id)
         {
-            throw new NotImplementedException();
+            var movie = await _movieRepository.GetByIdAsync(id);
+            //if (movie == null) throw new NotFoundException("Movie", id);
+            //var favoritesCount = await _favoriteRepository.GetCountAsync(f => f.MovieId == id);
+            var response = new MovieDetailsResponseModel
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Overview = movie.Overview,
+                Tagline = movie.Tagline,
+                Revenue = movie.Revenue,
+                Budget = movie.Budget,
+                ImdbUrl = movie.ImdbUrl,
+                TmdbUrl = movie.TmdbUrl,
+                PosterUrl = movie.PosterUrl,
+                BackdropUrl = movie.BackdropUrl,
+                ReleaseDate = movie.ReleaseDate,
+                RunTime = movie.RunTime,
+                Price = movie.Price,
+            };
+            return response;
         }
 
-        public Task<IEnumerable<MovieResponseModel>> GetTopRatedMovies()
+        public async Task<IEnumerable<MovieResponseModel>> GetTopRatedMovies()
         {
-            throw new NotImplementedException();
+            var topMovies = await _movieRepository.GetTopRatedMovies();
+            List<MovieResponseModel> response = new List<MovieResponseModel>();
+            foreach(var movie in topMovies)
+            {
+                response.Add(new MovieResponseModel
+                {
+                    Id = movie.Id,
+                    Title = movie.Title,
+                    PosterUrl=movie.PosterUrl,
+                    ReleaseDate=movie.ReleaseDate
+                });
+            }
+            return response;
         }
 
         public async Task<MovieDetailsResponseModel> CreateMovie(MovieCreateRequest movieCreateRequest)

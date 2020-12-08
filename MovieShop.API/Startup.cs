@@ -49,6 +49,8 @@ namespace MovieShop.API
             services.AddScoped<IAsyncRepository <MovieGenre>, EfRepository<MovieGenre>> ();
             services.AddScoped<ICryptoService, CryptoService>();
             services.AddScoped<IPurchaseRepository, PurchaseRepository > ();
+            services.AddScoped<ICastRepository, CastRepository>();
+            services.AddScoped<ICastService, CastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
