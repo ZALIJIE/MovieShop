@@ -27,6 +27,11 @@ namespace MovieShop.Infrastructure.Services
             throw new NotImplementedException();
         }
 
+        public Task AddMovieReview(ReviewRequestModel reviewRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<UserRegisterResponseModel> CreateUser(UserRegisterRequestModel requestModel)
         {
             //step1: check whether this user already exists in the db
@@ -76,6 +81,21 @@ namespace MovieShop.Infrastructure.Services
             throw new NotImplementedException();
         }
 
+        public Task<FavoriteResponseModel> GetAllFavoritesForUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<PurchaseResponseModel> GetAllPurchasesForUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ReviewResponseModel> GetAllReviewsByUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<PagedResultSet<User>> GetAllUsersByPagination(int pageSize = 20, int page = 0, string lastName = "")
         {
             throw new NotImplementedException();
@@ -99,11 +119,27 @@ namespace MovieShop.Infrastructure.Services
             return model;
         }
 
+        public Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PurchaseMovie(PurchaseRequestModel purchaseRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
         {
             throw new NotImplementedException();
         }
 
+        public Task UpdateMovieReview(ReviewRequestModel reviewRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Execute when user login 
         public async Task<UserLoginResponseModel> ValidateUser(string email, string password)
         {
             var user = await _userRepository.GetUserByEmail(email);

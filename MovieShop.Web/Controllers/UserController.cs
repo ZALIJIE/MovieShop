@@ -11,7 +11,7 @@ using MovieShop.Core.ServiceInterfaces;
 
 namespace MovieShop.Web.Controllers
 {
-    public class UserController : IUserService
+    public class UserController : ControllerBase
     {
         private readonly IMovieService _movieService;
         private readonly IUserService _userService;

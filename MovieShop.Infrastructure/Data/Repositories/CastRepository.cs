@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MovieShop.Core.Entities;
@@ -18,6 +19,12 @@ namespace MovieShop.Infrastructure.Repositories
             var cast = await _dbContext.Casts.Where(c => c.Id == id).Include(c => c.MovieCasts)
                                        .ThenInclude(c => c.Movie).FirstOrDefaultAsync();
             return cast;
+        }
+
+        public async Task<IEnumerable<Cast>> GetCastsByMovieId(int id)
+        {
+            var casts = await _dbContext.MovieCasts.Where(mc => mc.MovieId == id).Include(mc=>mc.Cast).Select(c=>c.Cast).ToListAsync();
+            return casts;
         }
     }
 }

@@ -32,9 +32,22 @@ namespace MovieShop.Infrastructure.Services
             _purchaseRepository = purchaseRepository;
         }
 
-        public Task<IEnumerable<MovieResponseModel>> GetMoviesByGenre(int genreId)
+        public async Task<IEnumerable<MovieResponseModel>> GetMoviesByGenre(int genreId)
         {
-            throw new NotImplementedException();
+            var movies = await _movieRepository.GetMoviesByGenre(genreId);
+            var returnedModel = new List<MovieResponseModel>();
+            foreach(var movie in movies)
+            {
+                var model = new MovieResponseModel
+                {
+                    Id = movie.Id,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl,
+                    ReleaseDate = movie.ReleaseDate
+                };
+                returnedModel.Add(model);
+            }
+            return returnedModel;
         }
 
 
@@ -104,7 +117,20 @@ namespace MovieShop.Infrastructure.Services
                 ReleaseDate = movie.ReleaseDate,
                 RunTime = movie.RunTime,
                 Price = movie.Price,
+                Casts = new List<MovieDetailsResponseModel.CastResponseModel>(),
             };
+            foreach(var cast in movie.MovieCasts)
+            {
+                response.Casts.Add(new MovieDetailsResponseModel.CastResponseModel
+                {
+                    Id=cast.CastId,
+                    Gender=cast.Cast.Gender,
+                    Name=cast.Cast.Name,
+                    ProfilePath=cast.Cast.ProfilePath,
+                    TmdbUrl=cast.Cast.TmdbUrl,
+                    Character=cast.Character
+                });
+            }
             return response;
         }
 
